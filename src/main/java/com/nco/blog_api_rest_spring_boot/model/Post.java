@@ -7,20 +7,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Table(name = "category")
-public class Category {
+@Table(name = "post")
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
 
-    @OneToMany(targetEntity = Post.class, fetch = FetchType.LAZY, mappedBy = "category")
-    List<Post> posts;
+    @ManyToOne(targetEntity = Category.class)
+    Category category;
 }
