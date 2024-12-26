@@ -27,6 +27,10 @@ public class PostService {
     public Post updatePostSvc(Post requestPost, Long id){
         Post post = this.postRepository.findById(id).get();
         post.setName(requestPost.getName());
+        post.setSlug(requestPost.getSlug());
+        post.setExtract(requestPost.getExtract());
+        post.setBody(requestPost.getBody());
+        post.setStatus(requestPost.getStatus());
         this.postRepository.save(post);
         return post;
     }

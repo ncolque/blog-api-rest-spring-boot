@@ -18,7 +18,12 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
+    String slug;
+    String extract;
+    String body;
+    String status;
 
     @ManyToOne(targetEntity = Category.class)
+    //@JoinColumn(name = "category_id_modificar_nombre")
     Category category;
 }

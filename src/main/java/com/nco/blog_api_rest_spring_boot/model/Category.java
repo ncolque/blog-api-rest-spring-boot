@@ -1,5 +1,6 @@
 package com.nco.blog_api_rest_spring_boot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -20,7 +21,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
+    String slug;
 
-    @OneToMany(targetEntity = Post.class, fetch = FetchType.LAZY, mappedBy = "category")
+    @JsonIgnore
+    @OneToMany(targetEntity = Post.class, fetch = FetchType.LAZY, mappedBy = "category") //mapperBy me sirve para enviarle el id y se relacione con un Post
     List<Post> posts;
 }

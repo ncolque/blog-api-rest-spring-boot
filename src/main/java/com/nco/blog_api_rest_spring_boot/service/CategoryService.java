@@ -27,6 +27,7 @@ public class CategoryService {
     public Category updateCategorySvc(Category categoryRequest, Long id){
         Category category = this.categoryRepository.findById(id).get();
         category.setName(categoryRequest.getName());
+        category.setSlug(categoryRequest.getSlug());
         this.categoryRepository.save(category);
         return category;
     }
